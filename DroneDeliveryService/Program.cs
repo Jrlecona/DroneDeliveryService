@@ -14,7 +14,10 @@ namespace DroneDeliveryService
             Scheduler scheduler = new Scheduler();
             Viewer viewer = new Viewer();
 
-            reader.ReadData(@"C:\Users\jrlec\source\repos\DroneDeliveryService\DroneDeliveryService\Resources\data.txt", out List<Drone> drones, out List<Location> locations);
+            string fileName = "data.txt";
+            string path = Path.Combine(Environment.CurrentDirectory, @"Resources\", fileName);
+
+            reader.ReadData(path, out List<Drone> drones, out List<Location> locations);
             viewer.Display(scheduler.GenerateSchedule(drones, locations));
         }
     }
